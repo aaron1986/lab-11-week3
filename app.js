@@ -96,7 +96,7 @@ function getRandomIndex() {
 
 
 
-  // add the event listener to the goats
+  // add the event listener to the images
   imageContainer.addEventListener("click", handleImageClick);
 
   renderImages();
