@@ -2,7 +2,7 @@
 let imageContainer = document.getElementById("section-images");
 
 
-//I wantred to use this code so I can new ways of writing code
+//I wantred to use this code so I can write new ways of writing code
 let image1 = document.querySelector("section img:first-child");
 let image2 = document.querySelector("section img:nth-child(2)");
 let image3 = document.querySelector("section img:last-child");
@@ -76,9 +76,8 @@ function getRandomIndex() {
 
 } // end of renderImages function
 
-  // Modify the handleImageClick function
+  //I modified the handleImageClick function
 function handleImageClick(event) {
-    // Check if the user has reached the maximum number of rounds
     if (rounds >= maxRounds) {
       alert("You have completed all rounds.");
       return;
@@ -95,11 +94,11 @@ function handleImageClick(event) {
       renderImages();
     }
   
-    // Increase the rounds counter
+    // Increment the rounds counter
     rounds++;
   
-    let resultsList = document.querySelector("li");
-    const resultItem = document.createElement("a");
+    let resultsList = document.querySelector("ul");
+    const resultItem = document.createElement("li");
     resultItem.textContent = `Round ${rounds}: ${clickedImage}`;
     resultsList.appendChild(resultItem);
   
@@ -113,10 +112,9 @@ function handleImageClick(event) {
       }
     }
   
-    // Check if the user has completed all rounds
+    // Check if the user has 25 rounds
     if (rounds >= maxRounds) {
       alert("You have completed all rounds.");
-      // You can add any additional logic here when the user has finished all rounds.
     }
   }
   
