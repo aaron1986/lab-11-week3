@@ -1,0 +1,73 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin:0;
+}
+
+nav {
+    background-color: black;
+    width: 100%;
+    padding-left: 30px;
+    padding-right: 10px;
+    display: flex;
+    align-items: center;
+
+}
+
+h1 {
+    margin-bottom: 5%;
+    margin-top: 5%;
+}
+
+#logo-img {
+    width:90px;
+    height:90px;
+}
+
+ul {
+    text-align: center;
+}
+
+li {
+    list-style: none;
+}
+
+li a {
+    color: #A7A6A7;
+    font-family: "Eastman";
+    text-decoration: none;
+}
+
+@font-face {
+    font-family: "Eastman";
+    src: url(./fonts/RoobertPROTRIAL-Bold.otf);
+}
+
+main {
+    display: grid;
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    grid-template-rows: 15rem 10rem;
+    margin-top:5%;
+}
+
+#lorem-text {
+    display: grid;
+  grid-row-gap: 52px;
+}
+
+p {
+    margin-top: 5%;
+}
+
+footer {
+    text-align: center;
+    font-size: 30px;
+}
+
+img {
+    width: 300px;
+    height: 300px;
+}
