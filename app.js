@@ -7,6 +7,11 @@ let image1 = document.querySelector("section img:first-child");
 let image2 = document.querySelector("section img:nth-child(2)");
 let image3 = document.querySelector("section img:last-child");
 
+// Variables to keep track of user selections and rounds
+let rounds = 0;
+const maxRounds = 25;
+
+
 function Images(name, src) {
     this.name = name;
     this.src = src;
@@ -71,32 +76,57 @@ function getRandomIndex() {
 
 } // end of renderImages function
 
-    // handle the image being clicked
-    function handleImageClick(event) {
-    // get the name of the image clicked
+  // Modify the handleImageClick function
+function handleImageClick(event) {
+    // Check if the user has reached the maximum number of rounds
+    if (rounds >= maxRounds) {
+      alert("You have completed all rounds.");
+      return;
+    }
+  
+    // Get the name of the image clicked
     let clickedImage = event.target.alt;
   
-    // check if the click is on an image
+    // Check if the click is on an image
     if (event.target === imageContainer) {
       alert("Please click on an image");
     } else {
-      // render more images
+      // Render more images
       renderImages();
     }
+  
+    // Increase the rounds counter
+    rounds++;
+  
+    let resultsList = document.querySelector("li");
+    const resultItem = document.createElement("a");
+    resultItem.textContent = `Round ${rounds}: ${clickedImage}`;
+    resultsList.appendChild(resultItem);
+  
     for (let i = 0; i < imagesArray.length; i++) {
-        // check if the name of the image in the array, matches the alt tag of our image
-        if (clickedImage === imagesArray[i].name) {
-          // increase the number of clicks
-          imagesArray[i].clicks++;
-          // stop the for loop because we found the goat
-          break;
-        }
+      // Check if the name of the image in the array matches the alt tag of our image
+      if (clickedImage === imagesArray[i].name) {
+        // Increase the number of clicks
+        imagesArray[i].clicks++;
+        // Stop the for loop because we found the image
+        break;
       }
-} //end of handleImageClick function
-
+    }
+  
+    // Check if the user has completed all rounds
+    if (rounds >= maxRounds) {
+      alert("You have completed all rounds.");
+      // You can add any additional logic here when the user has finished all rounds.
+    }
+  }
+  
 
 
   // add the event listener to the images
   imageContainer.addEventListener("click", handleImageClick);
 
   renderImages();
+
+
+
+

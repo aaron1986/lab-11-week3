@@ -6,7 +6,7 @@ body {
     margin:0;
 }
 
-nav {
+header {
     background-color: black;
     width: 100%;
     padding-left: 30px;
@@ -17,13 +17,26 @@ nav {
 }
 
 h1 {
+    color:white;
+    margin-top: 2%;
+    font-family: "Eastman";
+}
+
+h2 {
     margin-bottom: 5%;
-    margin-top: 5%;
+    font-family: "h2-heading";
+    font-size: 3rem;
+}
+
+@font-face {
+    font-family: "h2-heading";
+    src: url(./fonts/Playball.ttf);
 }
 
 #logo-img {
     width:90px;
     height:90px;
+    margin-top: 2%;
 }
 
 ul {
