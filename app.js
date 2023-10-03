@@ -83,48 +83,39 @@ function handleImageClick(event) {
       return;
     }
   
-    // Get the name of the image clicked
-    let clickedImage = event.target.alt;
-  
-    // Check if the click is on an image
-    if (event.target === imageContainer) {
-      alert("Please click on an image");
-    } else {
-      // Render more images
-      renderImages();
-    }
-  
     // Increment the rounds counter
     rounds++;
-  
-    let resultsList = document.querySelector("ul");
-    const resultItem = document.createElement("li");
-    resultItem.textContent = `Round ${rounds}: ${clickedImage}`;
-    resultsList.appendChild(resultItem);
-  
-    for (let i = 0; i < imagesArray.length; i++) {
-      // Check if the name of the image in the array matches the alt tag of our image
-      if (clickedImage === imagesArray[i].name) {
-        // Increase the number of clicks
+
+    // Get the name of the image clicked
+    let clickedImage = event.target.alt;
+
+    for(let i = 0; i < imagesArray.length; i++) {
+      if(clickedImage === imagesArray[i].name) {
         imagesArray[i].clicks++;
-        // Stop the for loop because we found the image
         break;
       }
+
     }
   
-    // Check if the user has 25 rounds
-    if (rounds >= maxRounds) {
-      alert("You have completed all rounds.");
-    }
+    renderImages();
   }
+
+    image1.addEventListener("click", handleImageClick);
+    image2.addEventListener("click", handleImageClick);
+    image3.addEventListener("click", handleImageClick);
+
+    function showResults() {
+      const results = document.querySelector("ul");
+
+      for(let i = 0; i < imagesArray.length; i++) {
+          const li = document.createElement("li");
+          const product = imagesArray[i];
+          li.textContent = `${product.name} clicked ${product.clicks} times`;
+          results.appendChild(li);
+      }
   
+    }
+    const viewResults = document.getElementById("view-results");
+    viewResults.addEventListener("click", showResults);
 
-
-  // add the event listener to the images
-  imageContainer.addEventListener("click", handleImageClick);
-
-  renderImages();
-
-
-
-
+    renderImages();
