@@ -75,59 +75,50 @@ function renderImages() {
 }
 
 // Modified handleImageClick function
+// Modify the handleImageClick function
 function handleImageClick(event) {
-    if (rounds >= maxRounds) {
-        alert("You have completed all rounds.");
-        return;
-    }
+  // Check if the user has reached the maximum number of rounds
+  if (rounds >= maxRounds) {
+    alert("You have completed all rounds.");
+    return;
+  }
 
- // increase the number of times the user has clicked
+  // Get the name of the image clicked
+  let clickedImage = event.target.alt;
+
+  // Check if the click is on an image
+  if (event.target === imageContainer) {
+    alert("Please click on an image");
+  } else {
+    // Render more images
+    renderImages();
+  }
+
+  // Increase the rounds counter
   rounds++;
 
-    // Get the name of the image clicked
-    let clickedImage = event.target.alt;
+  // Update the results list with the user's selections
+  let resultsList = document.querySelector("ul");
+  const resultItem = document.createElement("li");
+  resultItem.textContent = `Round ${rounds}: ${clickedImage}`;
+  resultsList.appendChild(resultItem);
 
-    // Check if the click is on an image
-    for(let i = 0; i < imagesArray.length; i++) {
-        if (clickedImage === imagesArray[i].name) {
-            imagesArray[i].clicks[i]++;
-            break;
-        }
+  for (let i = 0; i < imagesArray.length; i++) {
+    // Check if the name of the image in the array matches the alt tag of our image
+    if (clickedImage === imagesArray[i].name) {
+      // Increase the number of clicks
+      imagesArray[i].clicks++;
+      // Stop the for loop because we found the image
+      break;
     }
+  }
 
-        // Render more images
-        renderImages();
-    }
-
-    // Add event listener for image clicks
-image1.addEventListener("click", handleImageClick);
-image2.addEventListener("click", handleImageClick);
-image3.addEventListener("click", handleImageClick);
-
-
-
-    // Clear the existing results list
-    let resultsList = document.querySelector("ul");
-    const resultItem = document.createElement("li");
-
-    resultItem.textContent = `Round ${rounds}: ${clickedImage}`;
-    resultsList.appendChild(resultItem);
-  
-    for (let i = 0; i < imagesArray.length; i++) {
-      // Check if the name of the image in the array matches the alt tag of our image
-      if (clickedImage === imagesArray[i].name) {
-        // Increase the number of clicks
-        imagesArray[i].clicks++;
-        // Stop the for loop because we found the image
-        break;
-      }
-    }
-  
-    // Check if the user has 25 rounds
-    if (rounds >= maxRounds) {
-      alert("You have completed all rounds.");
-    }
-  
+  // Check if the user has completed all rounds
+  if (rounds >= maxRounds) {
+    alert("You have completed all rounds.");
+    // You can add any additional logic here when the user has finished all rounds.
+  }
+}
 
 
   // add the event listener to the images
@@ -135,4 +126,25 @@ image3.addEventListener("click", handleImageClick);
 
   renderImages();
 
-   
+  //////////////////////////////////////////////////////
+
+  const ctx = document.getElementById('myChart');
+
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+      datasets: [{
+        label: '# of Votes',
+        data: [12, 19, 3, 5, 2, 3],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
