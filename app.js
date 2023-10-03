@@ -1,8 +1,7 @@
-//Dom nodes
+// Dom nodes
 let imageContainer = document.getElementById("section-images");
 
-
-//I wantred to use this code so I can write new ways of writing code
+// I wanted to use this code so I can write new ways of writing code
 let image1 = document.querySelector("section img:first-child");
 let image2 = document.querySelector("section img:nth-child(2)");
 let image3 = document.querySelector("section img:last-child");
@@ -11,7 +10,6 @@ let image3 = document.querySelector("section img:last-child");
 let rounds = 0;
 const maxRounds = 25;
 
-
 function Images(name, src) {
     this.name = name;
     this.src = src;
@@ -19,10 +17,10 @@ function Images(name, src) {
     this.clicks = 0;
 }
 
-// function to choose a random images
+// Function to choose a random image
 function getRandomIndex() {
     return Math.floor(Math.random() * imagesArray.length);
-  }
+}
 
   //imagesArray
   const imagesArray = [
@@ -47,58 +45,71 @@ function getRandomIndex() {
     new Images("Why?-n Glass", "./img/wine-glass.jpg"),
   ];
 
-  function renderImages() {
-    // get 2 random indexes from the images array
-    let img1Index = getRandomIndex();
-    let img2Index = getRandomIndex();
-    let img3Index = getRandomIndex();
-  
-    // prevent the two images being the same goat
-    while (img1Index === img2Index || img1Index === img3Index || img2Index === img3Index) {
-        img2Index = getRandomIndex();
-        img3Index = getRandomIndex();
-    }
 
-    // change the src of our 3 images
-    image1.src = imagesArray[img1Index].src;
-    image2.src = imagesArray[img2Index].src;
-    image3.src = imagesArray[img3Index].src;
+function renderImages() {
+   // get 2 random indexes from the images array
+   let img1Index = getRandomIndex();
+   let img2Index = getRandomIndex();
+   let img3Index = getRandomIndex();
+ 
+   // prevent the two images being the same goat
+   while (img1Index === img2Index || img1Index === img3Index || img2Index === img3Index) {
+       img2Index = getRandomIndex();
+       img3Index = getRandomIndex();
+   }
 
-    //change name of our 3 images
-    image1.alt = imagesArray[img1Index].name;
-    image2.alt = imagesArray[img2Index].name;
-    image3.alt = imagesArray[img3Index].name;
+   // change the src of our 3 images
+   image1.src = imagesArray[img1Index].src;
+   image2.src = imagesArray[img2Index].src;
+   image3.src = imagesArray[img3Index].src;
 
-    // increase the image views
-    imagesArray[img1Index].views++;
-    imagesArray[img2Index].views++;
-    imagesArray[img3Index].views++;
+   //change name of our 3 images
+   image1.alt = imagesArray[img1Index].name;
+   image2.alt = imagesArray[img2Index].name;
+   image3.alt = imagesArray[img3Index].name;
 
-} // end of renderImages function
+   // increase the image views
+   imagesArray[img1Index].views++;
+   imagesArray[img2Index].views++;
+   imagesArray[img3Index].views++;
+}
 
-  //I modified the handleImageClick function
+// Modified handleImageClick function
 function handleImageClick(event) {
     if (rounds >= maxRounds) {
-      alert("You have completed all rounds.");
-      return;
+        alert("You have completed all rounds.");
+        return;
     }
-  
+
+ // increase the number of times the user has clicked
+  rounds++;
+
     // Get the name of the image clicked
     let clickedImage = event.target.alt;
-  
+
     // Check if the click is on an image
-    if (event.target === imageContainer) {
-      alert("Please click on an image");
-    } else {
-      // Render more images
-      renderImages();
+    for(let i = 0; i < imagesArray.length; i++) {
+        if (clickedImage === imagesArray[i].name) {
+            imagesArray[i].clicks[i]++;
+            break;
+        }
     }
-  
-    // Increment the rounds counter
-    rounds++;
-  
+
+        // Render more images
+        renderImages();
+    }
+
+    // Add event listener for image clicks
+image1.addEventListener("click", handleImageClick);
+image2.addEventListener("click", handleImageClick);
+image3.addEventListener("click", handleImageClick);
+
+
+
+    // Clear the existing results list
     let resultsList = document.querySelector("ul");
     const resultItem = document.createElement("li");
+
     resultItem.textContent = `Round ${rounds}: ${clickedImage}`;
     resultsList.appendChild(resultItem);
   
@@ -116,7 +127,6 @@ function handleImageClick(event) {
     if (rounds >= maxRounds) {
       alert("You have completed all rounds.");
     }
-  }
   
 
 
@@ -125,6 +135,4 @@ function handleImageClick(event) {
 
   renderImages();
 
-
-
-
+   
