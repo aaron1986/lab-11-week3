@@ -91,19 +91,10 @@ function handleImageClick(event) {
     // Check if the click is on an image
     for(let i = 0; i < imagesArray.length; i++) {
         if (clickedImage === imagesArray[i].name) {
-            imagesArray[i].clicks[i]++;
+            imagesArray[i].clicks++;
             break;
         }
-
-        // Render more images
-        renderImages();
     }
-
-    // Add event listener for image clicks
-image1.addEventListener("click", handleImageClick);
-image2.addEventListener("click", handleImageClick);
-image3.addEventListener("click", handleImageClick);
-  
 
     renderImages();
   }
@@ -121,11 +112,6 @@ image3.addEventListener("click", handleImageClick);
           li.textContent = `${product.name} clicked ${product.clicks} times`;
           results.appendChild(li);
       }
-
-    // Check if the user has 25 rounds
-    if (rounds >= maxRounds) {
-      alert("You have completed all rounds.");
-    }
   
     }
     const viewResults = document.getElementById("view-results");
@@ -133,10 +119,3 @@ image3.addEventListener("click", handleImageClick);
 
 
     renderImages();
-
-  // add the event listener to the images
-  imageContainer.addEventListener("click", handleImageClick);
-
-  renderImages();
-
-  
