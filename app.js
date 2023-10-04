@@ -72,6 +72,16 @@ function renderImages() {
     imagesArray[img1Index].views++;
     imagesArray[img2Index].views++;
     imagesArray[img3Index].views++;
+
+    viewCounts[img1Index]++;
+    viewCounts[img2Index]++;
+    viewCounts[img3Index]++;
+}
+
+// Create an array to store click counts
+const viewCounts = [];
+for(let i = 0; i < imagesArray.length; i++) {
+    viewCounts.push(0);
 }
 
 // Create an array to store click counts
@@ -99,7 +109,13 @@ const chart = new Chart(chartContext, {
             label: "Clicks",
             data: clickCounts,
             backgroundColor: ["rgba(39, 172, 245, 0.8)", "rgba(245, 40, 145, 0.8)", "rgba(39, 245, 193, 0.8)", "rgba(241, 245, 39, 0.8)", "rgba(245, 133, 39, 0.8)"],
-        }],
+        },
+        {
+            label: "Views",
+            data: viewCounts,
+            backgroundColor: ["#000"],
+        },
+    ],
     },
 });
 
