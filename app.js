@@ -80,30 +80,20 @@ function handleImageClick(event) {
         alert("You have completed all rounds.");
         return;
     }
-<<<<<<< HEAD
-  
+
     // Increment the rounds counter
     rounds++;
-=======
-
- // increase the number of times the user has clicked
-  rounds++;
->>>>>>> 08a28d0289052a2f7415e9e0c1685324438acb1f
 
     // Get the name of the image clicked
     let clickedImage = event.target.alt;
 
-<<<<<<< HEAD
-    for(let i = 0; i < imagesArray.length; i++) {
-      if(clickedImage === imagesArray[i].name) {
-=======
+
     // Check if the click is on an image
     for(let i = 0; i < imagesArray.length; i++) {
         if (clickedImage === imagesArray[i].name) {
             imagesArray[i].clicks[i]++;
             break;
         }
-    }
 
         // Render more images
         renderImages();
@@ -113,28 +103,8 @@ function handleImageClick(event) {
 image1.addEventListener("click", handleImageClick);
 image2.addEventListener("click", handleImageClick);
 image3.addEventListener("click", handleImageClick);
-
-
-
-    // Clear the existing results list
-    let resultsList = document.querySelector("ul");
-    const resultItem = document.createElement("li");
-
-    resultItem.textContent = `Round ${rounds}: ${clickedImage}`;
-    resultsList.appendChild(resultItem);
   
-    for (let i = 0; i < imagesArray.length; i++) {
-      // Check if the name of the image in the array matches the alt tag of our image
-      if (clickedImage === imagesArray[i].name) {
-        // Increase the number of clicks
->>>>>>> 08a28d0289052a2f7415e9e0c1685324438acb1f
-        imagesArray[i].clicks++;
-        break;
-      }
 
-    }
-  
-<<<<<<< HEAD
     renderImages();
   }
 
@@ -151,25 +121,22 @@ image3.addEventListener("click", handleImageClick);
           li.textContent = `${product.name} clicked ${product.clicks} times`;
           results.appendChild(li);
       }
-=======
+
     // Check if the user has 25 rounds
     if (rounds >= maxRounds) {
       alert("You have completed all rounds.");
     }
->>>>>>> 08a28d0289052a2f7415e9e0c1685324438acb1f
   
     }
     const viewResults = document.getElementById("view-results");
     viewResults.addEventListener("click", showResults);
 
-<<<<<<< HEAD
+
     renderImages();
-=======
 
   // add the event listener to the images
   imageContainer.addEventListener("click", handleImageClick);
 
   renderImages();
 
-   
->>>>>>> 08a28d0289052a2f7415e9e0c1685324438acb1f
+  
