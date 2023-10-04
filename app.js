@@ -10,41 +10,46 @@ let image3 = document.querySelector("section img:last-child");
 let rounds = 0;
 const maxRounds = 25;
 
-function Images(name, src) {
+const products = [];
+
+function Images(name, src, views, clicks) {
     this.name = name;
     this.src = src;
-    this.views = 0;
-    this.clicks = 0;
+    this.views = views;
+    this.clicks = clicks;
+    products.push(this);
+}
+
+//new code
+if(products!== null) {
+ //imagesArray
+ new Images("Unspecificed Droid Bag", "./img/bag.jpg", 0,0);
+ new Images("Fraudulent Banana Slicer", "./img/banana.jpg", 0,0);
+ new Images("iWiper", "./img/bathroom.jpg", 0,0);
+ new Images("Salacious Yellow Boots", "./img/boots.jpg", 0,0);
+ new Images("Breakfast For Gnomes", "./img/breakfast.jpg", 0,0);
+ new Images("Meatball Bubblegum", "./img/bubblegum.jpg", 0,0);
+ new Images("Unsettling Chair", "./img/chair.jpg", 0,0);
+ new Images("Cthulhu", "./img/cthulhu.jpg", 0,0);
+ new Images("Duck Mask For Dogs", "./img/dog-duck.jpg", 0,0);
+ new Images("Tinned Dragon Meat", "./img/dragon.jpg", 0,0);
+ new Images("Cutlery Extensions For Biro", "./img/pen.jpg", 0,0);
+ new Images("Pet Sweep Cleaning System", "./img/pet-sweep.jpg", 0,0);
+ new Images("Pizza Scissors Version 2", "./img/scissors.jpg", 0,0);
+ new Images("Terrifying Shark Sleeping Bag", "./img/shark.jpg", 0,0);
+ new Images("Baby Sweep Cleaning System", "./img/sweep.png", 0,0);
+ new Images("Terrifying Tauntaun Sleeping Bag", "./img/tauntaun.jpg", 0,0);
+ new Images("Tinned Unicorn Meat", "./img/unicorn.jpg", 0,0);
+ new Images("Infinite Watering Can", "./img/water-can.jpg", 0,0);
+ new Images("Why?-n Glass", "./img/wine-glass.jpg", 0,0);
+} else {
+const local = JSON.parse(products.getItem("products"));
 }
 
 // Function to choose a random image
 function getRandomIndex() {
     return Math.floor(Math.random() * imagesArray.length);
 }
-
-  //imagesArray
-  const imagesArray = [
-    new Images("Unspecificed Droid Bag", "./img/bag.jpg"),
-    new Images("Fraudulent Banana Slicer", "./img/banana.jpg"),
-    new Images("iWiper", "./img/bathroom.jpg"),
-    new Images("Salacious Yellow Boots", "./img/boots.jpg"),
-    new Images("Breakfast For Gnomes", "./img/breakfast.jpg"),
-    new Images("Meatball Bubblegum", "./img/bubblegum.jpg"),
-    new Images("Unsettling Chair", "./img/chair.jpg"),
-    new Images("Cthulhu", "./img/cthulhu.jpg"),
-    new Images("Duck Mask For Dogs", "./img/dog-duck.jpg"),
-    new Images("Tinned Dragon Meat", "./img/dragon.jpg"),
-    new Images("Cutlery Extensions For Biro", "./img/pen.jpg"),
-    new Images("Pet Sweep Cleaning System", "./img/pet-sweep.jpg"),
-    new Images("Pizza Scissors Version 2", "./img/scissors.jpg"),
-    new Images("Terrifying Shark Sleeping Bag", "./img/shark.jpg"),
-    new Images("Baby Sweep Cleaning System", "./img/sweep.png"),
-    new Images("Terrifying Tauntaun Sleeping Bag", "./img/tauntaun.jpg"),
-    new Images("Tinned Unicorn Meat", "./img/unicorn.jpg"),
-    new Images("Infinite Watering Can", "./img/water-can.jpg"),
-    new Images("Why?-n Glass", "./img/wine-glass.jpg"),
-  ];
-
 
 function renderImages() {
     // get 2 random indexes from the images array
@@ -153,3 +158,19 @@ image3.addEventListener("click", handleImageClick);
 
 // Render initial images
 renderImages();
+
+
+/*As a user, I would like my data to track totals between page refreshes, 
+  so that I can keep track of the increasing number of votes. */
+
+  //Implement local storage into your current application
+
+
+  //Store the products array into local storage as a formatted JSON string#
+  const imagesArrayString = JSON.stringify(imagesArray);
+  localStorage.setItem("Images", imagesArrayString);
+
+  //Retrieve the products array from local storage and then utilize the JSON.Parse() 
+  const local = JSON.parse(localStorage.getItem("Images"));
+
+  //loop
