@@ -1,13 +1,3 @@
-/* const imagesArrayString = JSON.stringify(imagesArray);
-localStorage.setItem("Images", imagesArrayString);
-
-const retreieveData = JSON.parse(localStorage.getItem("images"));
-
-for(let i = 0; i < localStorage.length; i++) {
-    console.log(localStorage[i]);
-} */
-
-
 const chartCanvas = document.getElementById("chart");
 const chartContext = chartCanvas.getContext("2d");
 
@@ -21,6 +11,8 @@ for (let i = 0; i < products.length; i++) {
     chartLabels.push(products[i].name);
     clickCounts.push(products[i].clicks);
     viewCounts.push(products[i].views);
+
+    console.log(clickCounts);
 }
 
 const chart = new Chart(chartContext, {

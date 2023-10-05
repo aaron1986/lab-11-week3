@@ -72,6 +72,10 @@ function renderImages() {
     products[img1Index].views++;
     products[img2Index].views++;
     products[img3Index].views++;
+
+    viewCounts[img1Index]++;
+    viewCounts[img2Index]++;
+    viewCounts[img3Index]++;
 }
 
 const viewCounts = [];
