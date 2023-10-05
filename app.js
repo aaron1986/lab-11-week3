@@ -4,6 +4,8 @@ let image1 = document.querySelector("section img:first-child");
 let image2 = document.querySelector("section img:nth-child(2)");
 let image3 = document.querySelector("section img:last-child");
 
+const htmlFilePath = './chart.html';
+
 // Variables to keep track of user selections and rounds
 let rounds = 0;
 const maxRounds = 25;
@@ -94,7 +96,8 @@ image3.addEventListener("click", handleImageClick);
 
 function handleImageClick(event) {
     if (rounds >= maxRounds) {
-        alert("You have completed all rounds.");
+        //alert("You have completed all rounds.");
+        document.getElementById("view-results");
         return;
     }
 
@@ -103,7 +106,7 @@ function handleImageClick(event) {
 
     for (let i = 0; i < products.length; i++) {
         if (clickedImage === products[i].name) {
-            clickCounts[i]++;
+            products[i].clicks++
             break;
         }
     }
@@ -112,4 +115,9 @@ function handleImageClick(event) {
     renderImages();
 }
 
+function loadComplete() {
+    window.open(htmlFilePath, '_blank');
+}
+
 renderImages();
+

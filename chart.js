@@ -12,7 +12,7 @@ for (let i = 0; i < products.length; i++) {
     clickCounts.push(products[i].clicks);
     viewCounts.push(products[i].views);
 
-    console.log(clickCounts);
+    //console.log(clickCounts);
 }
 
 const chart = new Chart(chartContext, {
