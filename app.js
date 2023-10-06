@@ -12,6 +12,9 @@ const maxRounds = 25;
 
 const products = [];
 
+//
+let previous = [];
+
 function Images(name, src, views, clicks) {
     this.name = name;
     this.src = src;
@@ -58,10 +61,13 @@ function renderImages() {
     let img2Index = getRandomIndex();
     let img3Index = getRandomIndex();
 
-    while (img1Index === img2Index || img1Index === img3Index || img2Index === img3Index) {
+    while (img1Index === img2Index || img1Index === img3Index || img2Index === img3Index || previous.includes(img1Index) || previous.includes(img2Index) || previous.includes(img3Index)) {
+        img1Index = getRandomIndex();
         img2Index = getRandomIndex();
         img3Index = getRandomIndex();
     }
+
+    previous = [img1Index, img2Index, img3Index];
 
     image1.src = products[img1Index].src;
     image2.src = products[img2Index].src;
